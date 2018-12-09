@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2016
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Piecework", "Piecework\Piecework.csproj", "{B829B1BF-B388-4346-AA2C-36FAC6466EC9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B829B1BF-B388-4346-AA2C-36FAC6466EC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B829B1BF-B388-4346-AA2C-36FAC6466EC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B829B1BF-B388-4346-AA2C-36FAC6466EC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B829B1BF-B388-4346-AA2C-36FAC6466EC9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D4826409-E8DE-469E-AD39-BAACE8C488AC}
+	EndGlobalSection
+EndGlobal
