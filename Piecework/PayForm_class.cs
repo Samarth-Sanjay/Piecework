@@ -1,19 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using TampaBay;
 using Clearwater;
+using TampaBay;
 
 namespace Piecework
 {
     public partial class PayForm_class : Form
     {
-        List<PieceworkPay> totalSalary = new List<PieceworkPay>();
+        private List<PieceworkPay> totalSalary = new List<PieceworkPay>();
+
         public PayForm_class()
         {
             InitializeComponent();
@@ -21,12 +18,12 @@ namespace Piecework
 
         private void PayForm_class_Load(object sender, EventArgs e)
         {
-
         }
 
         private void buttonclearAll_Click(object sender, EventArgs e)
         {
-            var dialogResult = MessageBox.Show("Are you sure you want to clear all", "Confirm", MessageBoxButtons.YesNo);
+            var dialogResult =
+                MessageBox.Show("Are you sure you want to clear all", "Confirm", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 totalSalary = new List<PieceworkPay>();
@@ -37,21 +34,14 @@ namespace Piecework
             }
             else if (dialogResult == DialogResult.No)
             {
-
             }
         }
 
         private void buttonClear_Click(object sender, EventArgs e)
         {
-            if (totalSalary.Any())
-            {
-                totalSalary.RemoveAt(totalSalary.Count - 1);
-            }
+            if (totalSalary.Any()) totalSalary.RemoveAt(totalSalary.Count - 1);
 
-            if (!totalSalary.Any())
-            {
-                buttonSummary.Enabled = false;
-            }
+            if (!totalSalary.Any()) buttonSummary.Enabled = false;
             textBoxNumberOfPieces.Text = "";
             textBoxWorkersName.Text = "";
             labelvalue.Text = "$ 0.00";
@@ -76,11 +66,10 @@ namespace Piecework
 
                 //    };
 
-                
-                
+
                 if (checkBoxSeniorPay.Checked)
                 {
-                    SeniorPay seniorPay = new SeniorPay()
+                    var seniorPay = new SeniorPay
                     {
                         Name = workersName,
                         Pieces = numberOfPieces
@@ -90,21 +79,20 @@ namespace Piecework
                 }
                 else
                 {
-                    PieceworkPay pieceWorkPay = new PieceworkPay()
+                    var pieceWorkPay = new PieceworkPay
                     {
                         Name = workersName,
                         Pieces = numberOfPieces
-
                     };
                     totalSalary.Add(pieceWorkPay);
                     labelvalue.Text = "$ " + pieceWorkPay.CalculatePay().ToString("0.00");
                 }
-                    
-                     
-               
+
+
                 buttonSummary.Enabled = true;
             }
         }
+
         public bool validate()
         {
             var numberOfPieces = textBoxNumberOfPieces.Text.Trim();
@@ -113,21 +101,14 @@ namespace Piecework
             try
             {
                 if (string.IsNullOrEmpty(workersName))
-                {
                     throw new ArgumentException("Please add worker's name");
-                }
-                else if (string.IsNullOrEmpty(numberOfPieces))
-                {
+                if (string.IsNullOrEmpty(numberOfPieces))
                     throw new ArgumentException("Please add the number of pieces");
-                }
 
                 try
                 {
                     var checknumberOfPieces = Convert.ToInt32(numberOfPieces);
-                    if (checknumberOfPieces <= 0)
-                    {
-                        throw new ArgumentException("Please enter a valid number of pieces");
-                    }
+                    if (checknumberOfPieces <= 0) throw new ArgumentException("Please enter a valid number of pieces");
                 }
                 catch (Exception e)
                 {
@@ -148,9 +129,7 @@ namespace Piecework
 
         private void buttonSummary_Click(object sender, EventArgs e)
         {
-            (new summaryForm(totalSalary)).Show();
+            new summaryForm(totalSalary).Show();
         }
     }
-
-    
 }
